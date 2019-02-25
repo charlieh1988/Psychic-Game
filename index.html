@@ -1,54 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>The Psychic Game</title>
 </head>
+
 <body>
-    <div id="psychicAct">
-        <h1>The Psychic Game</h1>    
-        <div id="results"><p>Guess what letter I'm thinking of:</p></div>
-      </div>
+
+  <!-- The title of the page -->
+  <h1>The Psychic Game</h1>
+
+  <p>Guess what letter I'm thinking of</p>
+
+  <!-- This is where we will have the win counter in HTML. It initially shows 0  -->
+  <p>Wins: <span id="wins">0</span></p>
+
+  <!-- This is where we will have the loss counter in HTML. It initially shows 0 -->
+  <p>Losses: <span id="losses">0</span></p>
+
+  <!-- This is where we will post the guessesLeft. Initially nothing is shown. -->
+  <p>Guesses Left: <span id="guesses-left"></span></p>
+
+  <!-- This is where we will post the guessesSoFar. Initially nothing is shown. -->
+  <p>Your Guesses so far: <span id="guesses-so-far"></span></p>
+
+  <!-- Link to JavaScript game.js -->
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
+
 </html>
-
-
-
-<script>
- var psychicLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    var youWin = 0;
-    var youLose = 0;
-    var guessesLeft = 13;
-    var guessedLetters = []; //Array to capture user letter input
-    document.onkeyup = function(event) {
-      var yourGuess = event.key; //variable to capute user's guess
-      guessedLetters.push(yourGuess); //This is suppose to capture letters     entered by the user    
-      var psychicAns = psychicLetters[Math.floor(Math.random() * psychicLetters.length)];
-      //If your guess matches the psychic's guess,
-      //a point is added to the "Wins" tally and the guesses tally restarts.
-      if (yourGuess === psychicAns) {
-        youWin++;
-        guessesLeft = 12;
-      }
-
- //If your does not not match the psychic's guess, your number of  guesses  remaining are deducted.
- else {
-        guessesLeft--;
-      }
-      //If the guesses remaining equals 0, you lose, an increment is added to  the "Losses" tally and the points restart.
-      if (guessesLeft === 0) {
-        youLose++;
-        guessesLeft = 12;
-      }
-      var html = "<p>Guess what letter I'm thinking of:</p>" +
-        "<p>Wins: " + youWin + "</p>" +
-        "<p>Loses: " + youLose + "</p>" +
-        "<p>Guesses Remaining: " + guessesLeft + "</p>" +
-        "<p>Guessed Letter: " + guessedLetters.join(', ') + "</p>" ; //Show guessed     letters heredocument.querySelector("#psychicAct").innerHTML = html;
-        
-        document.getElementById("results").innerHTML = html;
-    }
-   </script>
